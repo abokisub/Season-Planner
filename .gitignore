@@ -1,0 +1,15 @@
+# Dependencies and builds
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+
+# Data cache: only keep the demo farm's soil and slope (SoilGrids takes ~1 minute per new place)
+backend/cache/*
+!backend/cache/soil_12.150_8.350.json
+!backend/cache/terrain_12.1500_8.3500.json
+
+# Local tooling
+.claude/
+.DS_Store

@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/*
+  Design tokens. Two colours: green and white.
+  - brand: leaf green for actions and highlights
+  - ink:   deep green for text (a darker shade of the same green)
+  - paper: white
+  Every tint is a mix of green and white.
+*/
+@theme {
+  --color-*: initial;
+  --color-paper: #ffffff;
+  --color-brand: #1e7a44;
+  --color-ink: #0f3320;
+
+  --color-brand-700: color-mix(in oklab, #1e7a44 80%, #0f3320);
+  --color-brand-100: color-mix(in oklab, #1e7a44 14%, #ffffff);
+  --color-brand-50: color-mix(in oklab, #1e7a44 6%, #ffffff);
+  --color-mist: color-mix(in oklab, #1e7a44 3.5%, #ffffff);
+
+  --color-ink-80: color-mix(in oklab, #0f3320 80%, #ffffff);
+  --color-ink-65: color-mix(in oklab, #0f3320 62%, #ffffff);
+  --color-ink-45: color-mix(in oklab, #0f3320 42%, #ffffff);
+  --color-ink-25: color-mix(in oklab, #0f3320 22%, #ffffff);
+  --color-ink-12: color-mix(in oklab, #0f3320 10%, #ffffff);
+  --color-ink-6: color-mix(in oklab, #0f3320 5%, #ffffff);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px color-mix(in oklab, #0f3320 6%, transparent), 0 8px 24px -6px color-mix(in oklab, #0f3320 12%, transparent);
+  --shadow-float: 0 12px 32px -8px color-mix(in oklab, #0f3320 30%, transparent);
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Type scale */
+.t-display { @apply text-[2.25rem] font-extrabold leading-[1.08] tracking-[-0.02em]; }
+.t-title { @apply text-[1.75rem] font-extrabold leading-[1.15] tracking-[-0.015em]; }
+.t-heading { @apply text-lg font-bold leading-snug; }
+.t-eyebrow { @apply text-xs font-bold uppercase tracking-[0.08em]; }
+
+/* Map tinted green and white (see #duotone-map in index.html) */
+.map-duotone .leaflet-tile-pane {
+  filter: url(#duotone-map);
+}
+
+.leaflet-container {
+  font: inherit;
+  background: var(--color-mist);
+}
+
+input[type="range"] {
+  accent-color: var(--color-brand);
+}
+
+/* Hide hairline seams between filtered tiles */
+.map-duotone .leaflet-tile-container img {
+  width: 256.5px !important;
+  height: 256.5px !important;
+}
+
+/* Leaflet controls */
+.leaflet-bar,
+.leaflet-control-layers {
+  border: 0 !important;
+  border-radius: 14px !important;
+  overflow: hidden;
+  box-shadow: var(--shadow-card) !important;
+}
+.leaflet-bar a,
+.leaflet-control-layers,
+.leaflet-control-layers-expanded {
+  background: var(--color-paper) !important;
+  color: var(--color-ink) !important;
+}
+.leaflet-bar a {
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+}
+.leaflet-control-attribution {
+  background: color-mix(in oklab, var(--color-paper) 80%, transparent) !important;
+  color: var(--color-ink-65) !important;
+  font-size: 10px !important;
+}
+.leaflet-control-attribution a {
+  color: var(--color-ink-65) !important;
+}
+
+/* Hide scrollbars on horizontal rails */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* Screen transition */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-rise { animation: rise 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise { animation: none; }
+}

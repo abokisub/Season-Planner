@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%231E7A44'/><path d='M16 26V14M16 18.5c-4 0-6.5-2.6-6.5-7 4 0 6.5 2.6 6.5 7zm0-2.5c0-3.6 2-6 6-6 0 3.6-2 6-6 6z' fill='none' stroke='%23FFFFFF' stroke-width='2.2' stroke-linejoin='round' stroke-linecap='round'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#1E7A44" />
+    <title>Season Planner</title>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <!-- Photos: greyscale, more contrast, then mapped deep green -> leaf green -> pale green -> white -->
+      <filter id="duotone" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values=".3 .59 .11 0 0  .3 .59 .11 0 0  .3 .59 .11 0 0  0 0 0 1 0" />
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="1.25" intercept="-0.1" />
+          <feFuncG type="linear" slope="1.25" intercept="-0.1" />
+          <feFuncB type="linear" slope="1.25" intercept="-0.1" />
+        </feComponentTransfer>
+        <feComponentTransfer>
+          <feFuncR type="table" tableValues="0.059 0.118 0.80 1" />
+          <feFuncG type="table" tableValues="0.200 0.478 0.90 1" />
+          <feFuncB type="table" tableValues="0.125 0.267 0.83 1" />
+        </feComponentTransfer>
+      </filter>
+      <!-- Map tiles: light, so the pin and buttons stand out -->
+      <filter id="duotone-map" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values=".3 .59 .11 0 0  .3 .59 .11 0 0  .3 .59 .11 0 0  0 0 0 1 0" />
+        <feComponentTransfer>
+          <feFuncR type="table" tableValues="0.118 0.78 0.99" />
+          <feFuncG type="table" tableValues="0.478 0.9 0.995" />
+          <feFuncB type="table" tableValues="0.267 0.84 0.99" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
