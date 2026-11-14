@@ -9,12 +9,12 @@ Cities and water are masked, so a point on a town returns no data.
 """
 
 import json
-from pathlib import Path
 
 import httpx
 
+from .cachedir import CACHE_DIR
+
 URL = "https://rest.isric.org/soilgrids/v2.0/properties/query"
-CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 PROPS = ["nitrogen", "soc", "phh2o", "clay", "sand", "silt", "cec"]
 DEPTHS = ["0-5cm", "5-15cm", "15-30cm"]
 WEIGHTS = {"0-5cm": 5, "5-15cm": 10, "15-30cm": 15}  # thickness-weighted 0-30 cm mean

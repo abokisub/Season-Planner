@@ -18,7 +18,7 @@ The app supports, but does not replace, the farmer's own judgment and their exte
 
 - [`backend/`](backend/README.md): Python FastAPI service with the data and recommendation logic
 - [`frontend/`](frontend/README.md): React phone app (green and white design, 3D/AR field view)
-- `render.yaml`: one-click deploy of both to Render
+- `api/index.py` + `vercel.json`: deploy of both to Vercel (website + Python API on one domain)
 
 ## Run locally
 
@@ -35,7 +35,7 @@ Open http://localhost:5173.
 
 ## Deploy
 
-On [Render](https://render.com): **New → Blueprint**, pick this repository, then **Apply**. Render builds the API and the website and links them.
+On [Vercel](https://vercel.com): **Add New → Project**, import this repository, keep the settings from `vercel.json`, and click **Deploy**. The website is served from `frontend/dist`, and the Python API runs as a function at `/api/...`.
 
 ## Data sources
 

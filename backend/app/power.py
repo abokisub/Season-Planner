@@ -12,8 +12,9 @@ from pathlib import Path
 
 import httpx
 
+from .cachedir import CACHE_DIR
+
 POWER_URL = "https://power.larc.nasa.gov/api/temporal/daily/point"
-CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 
 PARAMETERS = [
     "T2M_MAX",      # daily max temperature, C

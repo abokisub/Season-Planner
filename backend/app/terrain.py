@@ -7,14 +7,14 @@ built from NASA's Shuttle Radar Topography Mission (SRTM) 30 m data.
 import io
 import json
 import math
-from pathlib import Path
 
 import httpx
 from PIL import Image
 
+from .cachedir import CACHE_DIR
+
 ZOOM = 13  # ~19 m pixels at 12°N
 TILE_URL = "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
-CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 
 
 def _tile_xy(lat: float, lon: float, z: int) -> tuple[float, float]:
